@@ -10,7 +10,7 @@ RUN go env -w GO111MODULE=on \
 # final stage
 FROM alpine
 LABEL name=ddns-go
-LABEL url=https://github.com/jeessy2/ddns-go
+LABEL url=https://github.com/puppy002/ddns-go
 
 WORKDIR /app
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \

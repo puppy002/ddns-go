@@ -17,6 +17,8 @@ build: $(DIR_SRC)/main.go
 build_docker_image:
 	@$(DOCKER_CMD) build -f ./Dockerfile -t ddns-go:$(VERSION) .
 
+docker_run:
+	docker run -d -p 9876:9876 --name ddns-go --restart=always  ddns-go:$(VERSION)
 test:
 	@$(GO) test ./...
 

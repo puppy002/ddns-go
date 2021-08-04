@@ -80,6 +80,7 @@ func getDomainsStatus(domains []*Domain) updateStatusType {
 
 // replacePara 替换参数
 func replacePara(domains *Domains, orgPara string, ipv4Result updateStatusType, ipv6Result updateStatusType) (newPara string) {
+	//	orgPara = strings.ReplaceAll(orgPara, "#{ipv4Addr}", domains.IpAddr)
 	orgPara = strings.ReplaceAll(orgPara, "#{ipv4Addr}", domains.Ipv4Addr)
 	orgPara = strings.ReplaceAll(orgPara, "#{ipv4Result}", string(ipv4Result))
 	orgPara = strings.ReplaceAll(orgPara, "#{ipv4Domains}", getDomainsStr(domains.Ipv4Domains))

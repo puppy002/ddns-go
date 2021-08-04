@@ -1,6 +1,6 @@
 .PHONY: build clean test test-race
 
-VERSION=0.0.1
+VERSION=0.0.2
 BIN=ddns-go
 DIR_SRC=.
 DOCKER_CMD=docker
@@ -18,7 +18,7 @@ build_docker_image:
 	@$(DOCKER_CMD) build -f ./Dockerfile -t ddns-go:$(VERSION) .
 
 docker_run:
-	docker run -d -p 9876:9876 --name ddns-go --restart=always  ddns-go:$(VERSION)
+	docker run -d -p 9876:9876 --name ddns-go --net=host --restart=always -v /home/ddns-go:/root ddns-go:$(VERSION)
 test:
 	@$(GO) test ./...
 

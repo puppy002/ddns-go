@@ -41,6 +41,7 @@ type Config struct {
 	DNS DNSConfig
 	User
 	Webhook
+	IPS IPSConfig
 	// 禁止公网访问
 	NotAllowWanAccess bool
 }
@@ -51,6 +52,18 @@ type DNSConfig struct {
 	Name   string
 	ID     string
 	Secret string
+}
+
+type IPSConfig struct {
+	Enable              bool
+	Region              string
+	AccessKeyID         string
+	AccessSecret        string
+	Scheme              string
+	SecurityIps         string
+	DBInstanceId        string
+	ModifyMode          string
+	SecurityIpGroupName string
 }
 
 // ConfigCache ConfigCache

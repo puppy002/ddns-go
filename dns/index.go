@@ -44,5 +44,11 @@ func RunOnce() {
 	dnsSelected.Init(&conf)
 
 	domains := dnsSelected.AddUpdateDomainRecords()
+
+	//云数据库Mongodb安全组白名单
+	if conf.IPS.Enable {
+		ModifyAliyunSecurityIps(&domains, &conf.IPS)
+	}
+
 	config.ExecWebhook(&domains, &conf)
 }

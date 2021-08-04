@@ -14,14 +14,22 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 
 	idNew := request.FormValue("DnsID")
 	secretNew := request.FormValue("DnsSecret")
+	accessKeyID := request.FormValue("AccessKeyID")
+	accessSecret := request.FormValue("AccessSecret")
 
-	idHide, secretHide := getHideIDSecret(&conf)
+	idHide, secretHide, aidHide, asecretHide := getHideIDSecret(&conf)
 
 	if idNew != idHide {
 		conf.DNS.ID = idNew
 	}
 	if secretNew != secretHide {
 		conf.DNS.Secret = secretNew
+	}
+	if accessKeyID != aidHide {
+		conf.IPS.AccessKeyID = accessKeyID
+	}
+	if accessSecret != asecretHide {
+		conf.IPS.AccessSecret = accessSecret
 	}
 
 	// 覆盖以前的配置
@@ -41,6 +49,12 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 
 	conf.Username = strings.TrimSpace(request.FormValue("Username"))
 	conf.Password = request.FormValue("Password")
+
+	conf.IPS.Region = request.FormValue("Region")
+	conf.IPS.Scheme = request.FormValue("Scheme")
+	conf.IPS.DBInstanceId = request.FormValue("DBInstanceId")
+	conf.IPS.ModifyMode = request.FormValue("ModifyMode")
+	conf.IPS.SecurityIpGroupName = request.FormValue("SecurityIpGroupName")
 
 	conf.WebhookURL = strings.TrimSpace(request.FormValue("WebhookURL"))
 	conf.WebhookRequestBody = strings.TrimSpace(request.FormValue("WebhookRequestBody"))

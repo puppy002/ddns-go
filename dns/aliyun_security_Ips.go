@@ -17,7 +17,7 @@ func ModifyAliyunSecurityIps(domains *config.Domains, conf *config.IPSConfig) {
 	// ipAddr, _ := conf.Domains.ParseDomainResult(recordType)
 	request := dds.CreateModifySecurityIpsRequest()
 	request.Scheme = conf.Scheme
-	request.SecurityIps = conf.SecurityIps
+	request.SecurityIps = domains.Ipv4Addr
 	request.DBInstanceId = conf.DBInstanceId
 	request.ModifyMode = conf.ModifyMode
 	request.SecurityIpGroupName = conf.SecurityIpGroupName

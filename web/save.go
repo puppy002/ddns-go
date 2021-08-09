@@ -50,6 +50,7 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 	conf.Username = strings.TrimSpace(request.FormValue("Username"))
 	conf.Password = request.FormValue("Password")
 
+	conf.IPS.Enable = request.FormValue("IpsEnable") == "on"
 	conf.IPS.Region = request.FormValue("Region")
 	conf.IPS.Scheme = request.FormValue("Scheme")
 	conf.IPS.DBInstanceId = request.FormValue("DBInstanceId")

@@ -56,6 +56,7 @@ func Writing(writer http.ResponseWriter, request *http.Request) {
 	}
 	if conf.IPS.ModifyMode == "" {
 		conf.IPS.Scheme = "Cover"
+		conf.IPS.Enable = true
 	}
 	// 默认禁止外部访问
 	conf.NotAllowWanAccess = true

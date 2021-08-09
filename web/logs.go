@@ -30,6 +30,8 @@ func init() {
 	// log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 }
 
+
+
 // Logs web
 func Logs(writer http.ResponseWriter, request *http.Request) {
 	for _, log := range mlogs.Logs {
